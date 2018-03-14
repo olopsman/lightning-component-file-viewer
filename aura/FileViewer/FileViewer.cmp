@@ -1,0 +1,19 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" controller="FilesViewerController" >
+  <aura:attribute name="recordId" type="String" />
+  <aura:attribute name="filesRecord" type="Object[]" />
+  <!--initialize call for new record -->
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />  
+
+    <div class="container forceRelatedListSingleContainer">
+	  <article class="slds-card slds-card_boundary forceRelatedListCardDesktop">
+	    <div class="slds-card__header slds-grid">
+            <aura:if isTrue="{!v.filesRecord.length > 0}">
+                  <aura:iteration items="{!v.filesRecord}" var="files">
+                      <div class="slds-media__figure"><lightning:button variant="brand" name="{!files.ContentDocumentId}" label="{!files.Title}" onclick="{! c.handleClick }" /></div>
+                 </aura:iteration>
+
+            </aura:if>
+        </div>
+        </article>
+    </div>
+</aura:component>
